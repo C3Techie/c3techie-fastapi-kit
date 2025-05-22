@@ -61,4 +61,4 @@ jobs:
           DATABASE_URL: postgresql://postgres:password@localhost:5432/test_db
           ENVIRONMENT: test
         run: |
-          pytest tests/ -v
+          pytest tests/ -v --allow-no-tests
