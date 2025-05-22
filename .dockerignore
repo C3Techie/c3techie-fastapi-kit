@@ -1,0 +1,21 @@
+# Exclude everything
+**
+
+# Include only what you need
+!src/
+!pyproject.toml
+!poetry.lock
+!Dockerfile
+
+# Still ignore unwanted files inside src/
+src/__pycache__/
+src/**/*.pyc
+src/**/*.pyo
+src/**/*.pyd
+src/**/*.db
+src/**/*.sqlite3
+src/**/*.log
+
+# Ignore test directories if not needed in image
+src/tests/
+src/test/
