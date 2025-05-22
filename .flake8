@@ -14,21 +14,17 @@ exclude =
     node_modules
 
 ignore =
-    E203,  # Whitespace before ':' (conflicts with Black)
-    W503,  # Line break before binary operator (Black-compatible)
-    E501,  # Line too long (handled by max-line-length)
-    F401,  # Unused imports (handled by per-file-ignores)
-    F403,  # 'from module import *' used (handled by per-file-ignores)
-    C901,  # Function is too complex (allow for complex route handlers)
-    B008   # Do not perform function calls in argument defaults (FastAPI DI needs this)
+    E203,
+    W503,
+    E501,
+    F401,
+    F403,
+    C901,
+    B008
 
 per-file-ignores =
-    # Allow __init__.py to re-export symbols
     */__init__.py:F401,F403,E402
-    # Allow test files to import fixtures
     */tests/*.py:F401,F403,E402
-    # Allow migrations to have unused imports
     alembic/versions/*.py:F401,F403
 
-# Black compatibility (if you use Black formatter)
-select = E,F,W,C,B,B9  # Default + bugbear
+select = E,F,W,C,B,B9
