@@ -1,9 +1,18 @@
+[tool.poetry]
+name = "c3techie-fastapi-kit"
+version = "0.1.0"
+description = ""
+authors = ["C3Techie <christianchibuike14@gmail.com>"]
+packages = [
+    { include = "app", from = "src" }
+]
+
 [project]
 name = "c3techie-fastapi-kit"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "C3Techie",email = "christianchibuike14@gmail.com"}
+    {name = "C3Techie", email = "christianchibuike14@gmail.com"}
 ]
 readme = "README.md"
 requires-python = ">=3.12"
