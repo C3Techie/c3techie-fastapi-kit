@@ -6,7 +6,7 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     ENVIRONMENT=production \
-    POETRY_VERSION=1.9.0
+    POETRY_VERSION=2.1.3
 
 # Install system dependencies
 RUN apt-get update \
