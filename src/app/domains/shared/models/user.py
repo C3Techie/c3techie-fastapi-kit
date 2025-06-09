@@ -9,6 +9,7 @@ if TYPE_CHECKING:
     from app.domains.shared.models.audit_log import AuditLog
     from app.domains.shared.models.password_reset import PasswordReset
 
+
 class User(DomainBase):
     """User model representing application users with authentication capabilities."""
     __tablename__ = "users"
