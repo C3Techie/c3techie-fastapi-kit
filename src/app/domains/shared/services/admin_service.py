@@ -6,6 +6,7 @@ from app.domains.shared.models.admin import Admin
 from app.core.exceptions import NotFoundError, PermissionError
 from app.core.permissions import is_superadmin
 
+
 class AdminService:
     def __init__(self, admin_crud: AdminCRUD):
         self.admin_crud = admin_crud
