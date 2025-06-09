@@ -14,12 +14,14 @@ from app.core.password_policy import PasswordPolicy
 
 PHONE_NUMBER_REGEX = r"^\+?[1-9]\d{1,14}$"
 
+
 class UserBase(BaseModel):
     """Base user schema with common fields."""
     username: str = Field(..., min_length=3, max_length=50, pattern=r"^[a-zA-Z0-9_]+$")
     email: EmailStr = Field(..., max_length=100)
     first_name: str = Field(..., min_length=1, max_length=50)
     last_name: str = Field(..., min_length=1, max_length=50)
+
 
 class UserCreate(UserBase):
     """Schema for creating a new user."""
@@ -64,6 +66,7 @@ class UserCreate(UserBase):
     @classmethod
     def handle_empty_string(cls, v):
         return empty_string_to_none(v)
+
 
 class UserUpdate(BaseModel):
     """Schema for updating user information."""
@@ -120,6 +123,7 @@ class UserUpdate(BaseModel):
             raise ValueError("At least one field must be provided")
         return self
 
+
 class UserRead(UserBase):
     """Schema for reading user information."""
     id: UUID
@@ -135,6 +139,7 @@ class UserRead(UserBase):
     class Config:
         from_attributes = True
 
+
 class UserList(BaseModel):
     """Schema for paginated user listing."""
     users: List[UserRead]
@@ -143,6 +148,7 @@ class UserList(BaseModel):
     per_page: int
     has_next: bool
     has_prev: bool
+
 
 class UserLogin(BaseModel):
     """Schema for user login."""
@@ -153,6 +159,7 @@ class UserLogin(BaseModel):
     @classmethod
     def normalize_identifier(cls, v):
         return v.lower()
+
 
 class UserPasswordChange(BaseModel):
     """Schema for changing user password."""
