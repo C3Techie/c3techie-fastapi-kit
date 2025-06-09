@@ -32,8 +32,8 @@ def get_user_service(db: AsyncSession = Depends(get_db)) -> UserService:
 
 # --- User Registration ---
 @router.post(
-    "/", 
-    response_model=UserRead, 
+    "/",
+    response_model=UserRead,
     status_code=status.HTTP_201_CREATED,
     dependencies=[Depends(RateLimiter(times=3, seconds=60))]
 )
@@ -99,6 +99,7 @@ async def get_user(
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return UserRead.model_validate(user)
+
 
 # --- Update User ---
 @router.patch("/{user_id}", response_model=UserRead)
