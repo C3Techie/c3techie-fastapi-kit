@@ -1,5 +1,6 @@
 from typing import List
 
+
 # Define permission constants
 ADMIN_PERMISSIONS = [
     "manage_users",
@@ -7,11 +8,13 @@ ADMIN_PERMISSIONS = [
     "edit_settings",
 ]
 
+
 SUPERADMIN_PERMISSIONS = [
     *ADMIN_PERMISSIONS,
     "manage_admins",
     "system_settings",
 ]
+
 
 def has_permission(admin, permission: str) -> bool:
     """
@@ -21,6 +24,7 @@ def has_permission(admin, permission: str) -> bool:
     if not admin or not admin.permissions:
         return False
     return permission in admin.permissions
+
 
 def is_superadmin(admin) -> bool:
     """

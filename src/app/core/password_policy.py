@@ -1,5 +1,6 @@
 import re
 
+
 class PasswordPolicy:
     """
     Enforces strong password requirements:

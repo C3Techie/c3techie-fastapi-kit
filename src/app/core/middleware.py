@@ -4,7 +4,9 @@ import time
 import uuid
 from app.utils.logging import get_logger
 
+
 logger = get_logger("uvicorn.access")
+
 
 class LoggingMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next):
