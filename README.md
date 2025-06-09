@@ -77,6 +77,100 @@ Once started, the app will be available at:
 
 ---
 
+## 🛡️ Creating a Superadmin User
+
+To set up an initial superadmin account for your project, follow the step-by-step instructions in [CREATE_SUPERADMIN.md](./CREATE_SUPERADMIN.md).
+
+---
+
+## 📁 Project Structure
+
+```
+c3techie-fastapi-kit/
+├── .github/
+│   └── workflows/
+│       ├── ci.yml                    # CI pipeline
+│       └── cd.yml                    # Deployment workflow
+├── .gitignore                        # Git ignore file
+├── .env.example                      # Example environment variables
+├── .flake8                           # Flake8 configuration
+├── docker-compose.yml                # Docker Compose for local development
+├── Dockerfile                        # Docker image definition
+├── alembic.ini                       # Alembic configuration
+├── pyproject.toml                    # Poetry project definition
+├── README.md                         # Project documentation
+├── run.py                            # Application entry point
+├── src/
+│   └── app/
+│       ├── __init__.py               # Package marker
+│       ├── main.py                   # FastAPI application initialization
+│       ├── config.py                 # Global configuration settings
+│       ├── dependencies.py           # Global dependency injection
+│       ├── api/
+│       │   ├── __init__.py           # API package marker
+│       │   ├── routes/
+│       │   │   ├── __init__.py       # Routes package marker
+│       │   │   ├── health.py         # Health check endpoints
+│       │   │   └── v1/               # API version 1
+│       │   │       ├── __init__.py   # V1 package marker
+│       │   │       ├── router.py     # Main V1 router
+│       │   │       ├── auth.py       # Auth endpoints
+│       │   │       ├── users.py      # User management endpoints
+│       │   │       ├── admins.py     # Admin management endpoints
+│       │   └── deps.py               # API-specific dependencies
+│       ├── core/
+│       │   ├── __init__.py           # Core package marker
+│       │   ├── security.py           # Security utilities (JWT, password hashing)
+│       │   ├── exceptions.py         # Custom exceptions
+│       │   ├── middleware.py         # Custom middleware
+│       │   └── permissions.py        # Role-based permissions
+│       │   ├── rate_limiter.py       # Request rate limiting
+│       │   ├── sanitizer.py          # Input sanitization
+│       │   ├── password_policy.py    # Password strength rules
+│       ├── db/
+│       │   ├── __init__.py           # DB package marker
+│       │   ├── session.py            # Database session management
+│       │   ├── base.py               # Base model with common fields
+│       │   └── migrations/           # Alembic migrations directory
+│       │       └── versions/         # Migration versions
+│       ├── domains/
+│       │   ├── __init__.py           # Domains package marker
+│       │   ├── shared/               # Shared domain components
+│       │   │   ├── __init__.py
+│       │   │   ├── models/           # Shared models (User, Admin, etc.)
+│       │   │   │   ├── __init__.py
+│       │   │   │   ├── user.py       # User model
+│       │   │   │   ├── admin.py      # Admin model
+│       │   │   │   ├── audit_log.py  # Audit model
+│       │   │   │   └── base.py       # Base domain model
+│       │   │   │   └── password_reset.py       # Reset Password
+│       │   │   ├── schemas/          # Shared schemas
+│       │   │   │   ├── __init__.py
+│       │   │   │   ├── user.py       # User schemas
+│       │   │   │   ├── admin.py      # Admin schemas
+│       │   │   │   ├── audit_log.py  # Audit schemas
+│       │   │   │   └── base.py       # Base schema
+│       │   │   ├── crud/             # Shared CRUD operations
+│       │   │   │   ├── __init__.py
+│       │   │   │   ├── user.py       # User CRUD
+│       │   │   │   ├── admin.py      # Admin CRUD
+│       │   │   │   └── base.py       # Base CRUD
+│       │   │   └── services/         # Shared services
+│       │   │       ├── __init__.py
+│       │   │       ├── auth_service.py       # Authentication service
+│       │   │       └── user_service.py       # User management service
+│       │   │       └── admin_service.py      # Admin management service
+│       └── utils/
+│           ├── __init__.py           # Utils package marker
+│           ├── logging.py            # Logging utilities
+│           ├── email.py              # Email utilities
+│           ├── date.py               # Date/time utilities
+│           └── validators.py         # Custom validators
+│           └── cache.py              # Redis caching layer
+```
+
+---
+
 ## 🔧 Other Resources
 
 - ✍️ [CONTRIBUTING.md](./CONTRIBUTING.md) — How to contribute to this project
@@ -91,7 +185,3 @@ Once started, the app will be available at:
 Happy building! If you run into issues, feel free to open a discussion or bug report via GitHub Issues.
 
 ---
-
-```
-
-```
