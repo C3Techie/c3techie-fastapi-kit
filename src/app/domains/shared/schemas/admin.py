@@ -25,9 +25,11 @@ class AdminBase(BaseModel):
     def validate_permissions_list_field(cls, v):
         return validate_permissions_list(v)
 
+
 class AdminCreate(AdminBase):
     """Schema for creating a new admin."""
     user_id: UUID = Field(..., description="ID of the user to be made admin")
+
 
 class AdminUpdate(BaseModel):
     """Schema for updating admin information."""
@@ -49,6 +51,7 @@ class AdminUpdate(BaseModel):
     def validate_permissions_list_field(cls, v):
         return validate_permissions_list(v)
 
+
 class AdminRead(AdminBase):
     """Schema for reading admin information."""
     id: UUID
@@ -61,6 +64,7 @@ class AdminRead(AdminBase):
 
     class Config:
         from_attributes = True
+
 
 class AdminList(BaseModel):
     """Schema for paginated admin listing."""
