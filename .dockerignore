@@ -1,11 +1,13 @@
-# Exclude everything
+# Exclude everything by default
 **
 
-# Include only what you need
+# Include only what you need (recursively)
 !src/
+!src/**
 !pyproject.toml
 !poetry.lock
 !Dockerfile
+!.env
 
 # Still ignore unwanted files inside src/
 src/__pycache__/
