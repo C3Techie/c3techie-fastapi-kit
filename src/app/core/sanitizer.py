@@ -27,8 +27,8 @@ def sanitize_username(username: str) -> str:
 
 
 def sanitize_phone(
-    phone: str, 
-    region: str = "US", 
+    phone: str,
+    region: str = "US",
     fmt=phonenumbers.PhoneNumberFormat.E164
 ) -> str:
     """Normalize phone number to the specified format (default E.164)."""
