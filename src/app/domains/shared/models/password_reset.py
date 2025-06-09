@@ -8,6 +8,7 @@ from app.domains.shared.models.base import DomainBase
 if TYPE_CHECKING:
     from app.domains.shared.models.user import User
 
+
 class PasswordReset(DomainBase):
     """Model for password reset tokens and requests."""
     __tablename__ = "password_resets"
