@@ -11,6 +11,7 @@ from app.utils.logging import get_logger
 
 logger = get_logger(__name__)
 
+
 def db_operation(func):
     async def wrapper(self, *args, **kwargs):
         try:
@@ -20,6 +21,7 @@ def db_operation(func):
             logger.error(f"{func.__name__} failed: {e}")
             raise DatabaseError(f"{func.__name__} failed: {str(e)}") from e
     return wrapper
+
 
 class AdminCRUD:
     """CRUD operations for Admin model."""
