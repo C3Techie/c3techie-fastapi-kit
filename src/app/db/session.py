@@ -14,6 +14,7 @@ AsyncSessionLocal = sessionmaker(
     autocommit=False,
 )
 
+
 # Dependency for FastAPI
 async def get_async_session():
     async with AsyncSessionLocal() as session:
