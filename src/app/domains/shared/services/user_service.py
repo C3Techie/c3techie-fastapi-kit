@@ -25,6 +25,7 @@ from app.domains.shared.crud.admin import AdminCRUD
 
 logger = get_logger(__name__)
 
+
 def convert_for_json(obj):
     """Recursively convert UUIDs and datetimes in dicts/lists to strings for JSON serialization."""
     if isinstance(obj, dict):
@@ -96,7 +97,7 @@ class UserService:
             await self.cache.set(f"user_profile:{user.id}", user_schema.model_dump_json(), expire=600)
             logger.info("User created successfully: %s", user.username)
             return user
-        except Exception as e:
+        except Exception:
             logger.error("User creation failed", exc_info=True)
             raise
 
