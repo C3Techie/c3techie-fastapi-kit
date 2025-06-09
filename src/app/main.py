@@ -41,17 +41,21 @@ async def conflict_error_handler(request: Request, exc: ConflictError):
 async def validation_error_handler(request: Request, exc: ValidationError):
     return JSONResponse(status_code=422, content={"detail": str(exc)})
 
+
 @app.exception_handler(DatabaseError)
 async def database_error_handler(request: Request, exc: DatabaseError):
     return JSONResponse(status_code=500, content={"detail": str(exc)})
+
 
 @app.exception_handler(AuthorizationError)
 async def authorization_error_handler(request: Request, exc: AuthorizationError):
     return JSONResponse(status_code=403, content={"detail": str(exc)})
 
+
 @app.exception_handler(Exception)
 async def generic_exception_handler(request: Request, exc: Exception):
     return JSONResponse(status_code=500, content={"detail": "Internal server error"})
+
 
 # Register health check
 app.include_router(health_router, prefix="/api/health", tags=["health"])
