@@ -26,6 +26,7 @@ class EmailConfig:
     POOL_SIZE: int = 3
     MAX_EMAIL_SIZE: int = 25 * 1024 * 1024
 
+
 # Initialize configuration from settings
 email_config = EmailConfig(
     THREAD_POOL_SIZE=getattr(settings, "EMAIL_THREAD_POOL_SIZE", 5),
@@ -38,7 +39,6 @@ email_config = EmailConfig(
 )
 
 
-# Connection pool for SMTP (synchronous)
 class SMTPConnectionPool:
     def __init__(self):
         self._pool = []
@@ -71,14 +71,17 @@ class SMTPConnectionPool:
                     except Exception:
                         pass
 
+
 # Create thread pool executor and connection pool
 _email_executor = ThreadPoolExecutor(max_workers=email_config.THREAD_POOL_SIZE)
 _smtp_pool = SMTPConnectionPool()
+
 
 def _validate_message_size(msg: EmailMessage) -> None:
     msg_size = len(msg.as_bytes())
     if msg_size > email_config.MAX_EMAIL_SIZE:
         raise ValueError(f"Message too large ({msg_size} > {email_config.MAX_EMAIL_SIZE} bytes)")
+
 
 def _create_email_message(
     subject: str,
@@ -95,6 +98,7 @@ def _create_email_message(
         msg.add_alternative(html, subtype="html")
     _validate_message_size(msg)
     return msg
+
 
 def _send_email_sync(
     subject: str,
@@ -114,6 +118,7 @@ def _send_email_sync(
     except Exception as e:
         logger.error(f"Failed to send email to {recipient}: {e}")
         raise
+
 
 def _send_email_sync_with_retry(
     subject: str,
@@ -142,6 +147,7 @@ def _send_email_sync_with_retry(
     logger.error(f"All {retries} attempts failed for {recipient}")
     raise last_error if last_error else Exception("Email sending failed")
 
+
 async def send_email(
     subject: str,
     recipient: str,
@@ -167,7 +173,7 @@ async def send_email(
         logger.error(f"Email sending failed for {recipient}: {e}")
         raise
 
-# Alternative async implementation using aiosmtplib with connection pooling
+
 class AsyncSMTPConnectionPool:
     def __init__(self):
         self._pool = asyncio.Queue()
@@ -195,7 +201,9 @@ class AsyncSMTPConnectionPool:
         else:
             await conn.quit()
 
+
 _async_smtp_pool = AsyncSMTPConnectionPool()
+
 
 async def send_email_async(
     subject: str,
@@ -234,6 +242,7 @@ async def send_email_async(
             await asyncio.sleep(delay)
     logger.error(f"All {retries} attempts failed for {recipient}")
     raise last_error if last_error else Exception("Failed to send email")
+
 
 async def send_verification_email(
     recipient_email: str,
