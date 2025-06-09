@@ -2,6 +2,7 @@ from pydantic_settings import BaseSettings
 from pydantic import EmailStr
 from uuid import UUID
 
+
 class Settings(BaseSettings):
     # Core
     ENVIRONMENT: str = "development"
@@ -45,5 +46,6 @@ class Settings(BaseSettings):
         env_file = ".env"
         case_sensitive = True
         extra = "allow"
+
 
 settings = Settings()
