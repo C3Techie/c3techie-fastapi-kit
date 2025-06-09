@@ -15,7 +15,7 @@ from src.app.config import settings
 
 logger = logging.getLogger(__name__)
 
-# Configuration class for email settings
+
 @dataclass
 class EmailConfig:
     THREAD_POOL_SIZE: int = 5
