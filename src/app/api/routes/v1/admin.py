@@ -21,8 +21,8 @@ def get_admin_service(db: AsyncSession = Depends(get_db)) -> AdminService:
 
 
 @router.post(
-    "/", 
-    response_model=AdminRead, 
+    "/",
+    response_model=AdminRead,
     status_code=status.HTTP_201_CREATED
 )
 async def create_admin(
