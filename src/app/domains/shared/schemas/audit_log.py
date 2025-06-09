@@ -14,9 +14,11 @@ class AuditLogBase(BaseModel):
     user_agent: Optional[str] = Field(None, max_length=500)
     details: Optional[Dict[str, Any]] = None
 
+
 class AuditLogCreate(AuditLogBase):
     """Schema for creating an audit log entry."""
     pass
+
 
 class AuditLogRead(AuditLogBase):
     """Schema for reading audit log entries."""
@@ -25,6 +27,7 @@ class AuditLogRead(AuditLogBase):
 
     class Config:
         from_attributes = True
+
 
 class AuditLogList(BaseModel):
     """Schema for paginated audit log listing."""
