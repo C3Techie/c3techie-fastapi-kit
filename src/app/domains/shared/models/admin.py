@@ -13,8 +13,8 @@ class Admin(DomainBase):
     user_id: Mapped[UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), unique=True, nullable=False, index=True)
     role: Mapped[str] = mapped_column(String(50), default="admin", nullable=False)
     assigned_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True), 
-        default=lambda: datetime.now(timezone.utc), 
+        DateTime(timezone=True),
+        default=lambda: datetime.now(timezone.utc),
         nullable=False
     )
     permissions: Mapped[Optional[list[str]]] = mapped_column(ARRAY(String), nullable=True)
