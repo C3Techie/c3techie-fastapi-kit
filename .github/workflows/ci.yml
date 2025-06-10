@@ -60,5 +60,11 @@ jobs:
         env:
           DATABASE_URL: postgresql://postgres:password@localhost:5432/test_db
           ENVIRONMENT: test
+          SECRET_KEY: test-secret-key
+          SMTP_USER: test@example.com
+          SMTP_PASSWORD: testpassword
+          EMAIL_FROM: test@example.com
+          SMTP_HOST: smtp.example.com
+          SMTP_PORT: 587
         run: |
           poetry run pytest tests/ -v || [[ $? == 5 ]]
