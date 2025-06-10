@@ -58,7 +58,7 @@ jobs:
           poetry install --with dev
       - name: Test with pytest
         env:
-          DATABASE_URL: postgresql://postgres:password@localhost:5432/test_db
+          DATABASE_URL: postgresql+asyncpg://postgres:password@localhost:5432/test_db
           ENVIRONMENT: test
           SECRET_KEY: test-secret-key
           SMTP_USER: test@example.com
